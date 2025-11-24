@@ -1,8 +1,9 @@
 {
   "appTitle": "AI 비디오 번역기",
   "auth": {
+    "apiKey": "x-api-key",
+    "enterApiKey": "x-api-key를 입력하세요",
     "clientCredentials": "클라이언트 자격 증명",
-    "apiToken": "API 토큰",
     "clientId": "클라이언트 ID",
     "enterClientId": "클라이언트 ID를 입력하세요",
     "clientSecret": "클라이언트 시크릿",
@@ -12,6 +13,7 @@
   },
   "selectSourceLanguage": "원본 언어 선택",
   "selectTargetLanguage": "대상 언어 선택",
+  "selectVoice": "음성 선택",
   "videoUrl": "비디오 URL",
   "enterVideoUrl": "비디오 URL을 입력하세요",
   "enableLipSync": "립싱크 활성화",
@@ -19,19 +21,68 @@
   "translating": "번역 중...",
   "downloadVideo": "비디오 다운로드",
   "translateAnother": "다른 비디오 번역",
+  "videoPreview": {
+    "title": "비디오 미리보기",
+    "placeholder": "위에 비디오 URL을 입력하여 미리보기",
+    "error": "비디오를 로드할 수 없습니다. URL을 확인하세요"
+  },
+  "languageSelection": {
+    "title": "언어 선택"
+  },
+  "basicOptions": {
+    "title": "기본 옵션",
+    "speakerNum": "화자 수",
+    "autoDetect": "자동 감지",
+    "dynamicVideoLength": "동적 비디오 길이"
+  },
+  "advancedSettings": {
+    "title": "고급 설정",
+    "removeBgm": "배경 음악 제거",
+    "captionType": "자막",
+    "captionFileUrl": "자막 파일 URL (SRT/ASS)",
+    "captionFileUrlHint": "SRT 및 ASS 형식만 지원됩니다",
+    "captionOptions": {
+      "none": "없음",
+      "addOriginal": "원본 언어 자막 추가",
+      "addTarget": "대상 언어 자막 추가",
+      "translateReplace": "원본 자막을 번역하여 교체",
+      "addTranslated": "원본 자막을 유지하면서 번역 자막 추가"
+    }
+  },
+  "loading": {
+    "languages": "언어를 불러오는 중...",
+    "voices": "음성을 불러오는 중..."
+  },
   "processing": {
     "title": "비디오 처리 중",
-    "message": "비디오를 처리 중입니다. 잠시만 기다려 주세요"
+    "message": "비디오를 처리 중입니다. 잠시만 기다려 주세요",
+    "statuses": {
+      "queueing": "대기 중",
+      "processing": "처리 중",
+      "completed": "완료됨",
+      "failed": "실패"
+    }
+  },
+  "results": {
+    "title": "번역 결과",
+    "singleVideo": "번역된 비디오가 준비되었습니다!",
+    "multipleVideos": "번역된 비디오 {{count}}개가 준비되었습니다!",
+    "backToGallery": "갤러리로 돌아가기",
+    "galleryHint": "비디오를 클릭하여 미리보기 및 다운로드",
+    "videosReady": "{{total}}개 중 {{completed}}개 비디오 준비됨",
+    "videosReadyWithFailed": "{{completed}}개 비디오 준비됨, {{failed}}개 실패"
   },
   "errors": {
     "invalidInput": "유효한 비디오 URL, 원본 언어 및 대상 언어를 선택하세요",
     "fetchError": "언어를 가져오는 중 오류가 발생했습니다",
     "translationError": "비디오 번역 중 오류가 발생했습니다",
+    "apiKeyError": "유효한 x-api-key를 입력하세요",
     "tokenError": "클라이언트 ID와 클라이언트 시크릿을 모두 입력하세요",
+    "voiceRequired": "대상 언어의 음성을 선택하세요",
     "apiError": "API 오류"
   },
   "buttons": {
-    "submitToken": "토큰 제출",
+    "submitApiKey": "x-api-key 제출",
     "ok": "확인"
   }
 }

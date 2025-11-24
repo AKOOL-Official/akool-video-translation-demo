@@ -1,8 +1,9 @@
 {
     "appTitle": "AIビデオ翻訳",
     "auth": {
+      "apiKey": "x-api-key",
+      "enterApiKey": "x-api-keyを入力してください",
       "clientCredentials": "クライアント認証情報",
-      "apiToken": "APIトークン",
       "clientId": "クライアントID",
       "enterClientId": "クライアントIDを入力してください",
       "clientSecret": "クライアントシークレット",
@@ -12,6 +13,7 @@
     },
     "selectSourceLanguage": "翻訳元言語を選択",
     "selectTargetLanguage": "翻訳先言語を選択",
+    "selectVoice": "音声を選択",
     "videoUrl": "ビデオURL",
     "enterVideoUrl": "ビデオURLを入力してください",
     "enableLipSync": "リップシンクを有効にする",
@@ -19,19 +21,68 @@
     "translating": "翻訳中...",
     "downloadVideo": "ビデオをダウンロード",
     "translateAnother": "別のビデオを翻訳",
+    "videoPreview": {
+      "title": "ビデオプレビュー",
+      "placeholder": "ビデオURLを入力してプレビュー",
+      "error": "ビデオを読み込めません。URLを確認してください"
+    },
+    "languageSelection": {
+      "title": "言語選択"
+    },
+    "basicOptions": {
+      "title": "基本オプション",
+      "speakerNum": "話者数",
+      "autoDetect": "自動検出",
+      "dynamicVideoLength": "動画の動的長さ"
+    },
+    "advancedSettings": {
+      "title": "高度な設定",
+      "removeBgm": "背景音楽を削除",
+      "captionType": "字幕",
+      "captionFileUrl": "字幕ファイルURL (SRT/ASS)",
+      "captionFileUrlHint": "SRTおよびASS形式のみサポートされています",
+      "captionOptions": {
+        "none": "なし",
+        "addOriginal": "元の言語の字幕を追加",
+        "addTarget": "ターゲット言語の字幕を追加",
+        "translateReplace": "元の字幕を翻訳して置き換え",
+        "addTranslated": "元の字幕を保持しながら翻訳字幕を追加"
+      }
+    },
+    "loading": {
+      "languages": "言語を読み込み中...",
+      "voices": "音声を読み込み中..."
+    },
     "processing": {
       "title": "ビデオ処理中",
-      "message": "ビデオを処理中です。お待ちください"
+      "message": "ビデオを処理中です。お待ちください",
+      "statuses": {
+        "queueing": "キュー待ち",
+        "processing": "処理中",
+        "completed": "完了",
+        "failed": "失敗"
+      }
+    },
+    "results": {
+      "title": "翻訳結果",
+      "singleVideo": "翻訳されたビデオの準備が整いました！",
+      "multipleVideos": "翻訳されたビデオ {{count}} 本の準備が整いました！",
+      "backToGallery": "ギャラリーに戻る",
+      "galleryHint": "ビデオをクリックしてプレビューおよびダウンロード",
+      "videosReady": "{{total}} 本中 {{completed}} 本のビデオ準備完了",
+      "videosReadyWithFailed": "{{completed}} 本のビデオ準備完了、{{failed}} 本失敗"
     },
     "errors": {
       "invalidInput": "有効なビデオURL、翻訳元言語、翻訳先言語を選択してください",
       "fetchError": "言語の取得中にエラーが発生しました",
       "translationError": "ビデオの翻訳中にエラーが発生しました",
+      "apiKeyError": "有効なx-api-keyを入力してください",
       "tokenError": "クライアントIDとクライアントシークレットを両方入力してください",
+      "voiceRequired": "翻訳先言語の音声を選択してください",
       "apiError": "APIエラー"
     },
     "buttons": {
-      "submitToken": "トークンを送信",
+      "submitApiKey": "x-api-keyを送信",
       "ok": "OK"
     }
   }

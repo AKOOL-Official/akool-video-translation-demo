@@ -1,8 +1,9 @@
 {
   "appTitle": "AI视频翻译",
   "auth": {
+    "apiKey": "x-api-key",
+    "enterApiKey": "输入您的x-api-key",
     "clientCredentials": "客户端凭证",
-    "apiToken": "API令牌",
     "clientId": "客户端ID",
     "enterClientId": "输入您的客户端ID",
     "clientSecret": "客户端密钥",
@@ -12,6 +13,7 @@
   },
   "selectSourceLanguage": "选择源语言",
   "selectTargetLanguage": "选择目标语言",
+  "selectVoice": "选择语音",
   "videoUrl": "视频链接",
   "enterVideoUrl": "输入视频链接",
   "enableLipSync": "启用唇形同步",
@@ -19,19 +21,68 @@
   "translating": "正在翻译...",
   "downloadVideo": "下载视频",
   "translateAnother": "翻译另一个",
+  "videoPreview": {
+    "title": "视频预览",
+    "placeholder": "在上方输入视频链接以预览",
+    "error": "无法加载视频，请检查链接"
+  },
+  "languageSelection": {
+    "title": "语言选择"
+  },
+  "basicOptions": {
+    "title": "基本选项",
+    "speakerNum": "说话者数量",
+    "autoDetect": "自动检测",
+    "dynamicVideoLength": "动态视频长度"
+  },
+  "advancedSettings": {
+    "title": "高级设置",
+    "removeBgm": "移除背景音乐",
+    "captionType": "字幕",
+    "captionFileUrl": "字幕文件URL (SRT/ASS)",
+    "captionFileUrlHint": "仅支持SRT和ASS格式",
+    "captionOptions": {
+      "none": "无",
+      "addOriginal": "添加原始语言字幕",
+      "addTarget": "添加目标语言字幕",
+      "translateReplace": "翻译并替换原始字幕",
+      "addTranslated": "添加翻译字幕同时保留原始字幕"
+    }
+  },
+  "loading": {
+    "languages": "正在加载语言...",
+    "voices": "正在加载语音..."
+  },
   "processing": {
     "title": "视频处理中",
-    "message": "您的视频正在处理中，请耐心等待"
+    "message": "您的视频正在处理中，请耐心等待",
+    "statuses": {
+      "queueing": "排队中",
+      "processing": "处理中",
+      "completed": "已完成",
+      "failed": "失败"
+    }
   },
-  "errors": {
-    "invalidInput": "请提供有效的视频链接、选择源语言和目标语言",
-    "fetchError": "获取语言时发生错误",
-    "translationError": "翻译视频时发生错误",
-    "tokenError": "请输入客户端ID和客户端密钥",
-    "apiError": "API错误"
+  "results": {
+    "title": "翻译结果",
+    "singleVideo": "您的翻译视频已准备就绪！",
+    "multipleVideos": "您的 {{count}} 个翻译视频已准备就绪！",
+    "backToGallery": "返回图库",
+    "galleryHint": "点击任意视频以预览和下载",
+    "videosReady": "{{completed}} / {{total}} 个视频已就绪",
+    "videosReadyWithFailed": "{{completed}} 个视频已就绪，{{failed}} 个失败"
   },
+    "errors": {
+      "invalidInput": "请提供有效的视频链接、选择源语言和目标语言",
+      "fetchError": "获取语言时发生错误",
+      "translationError": "翻译视频时发生错误",
+      "apiKeyError": "请输入有效的x-api-key",
+      "tokenError": "请输入客户端ID和客户端密钥",
+      "voiceRequired": "请为目标语言选择语音",
+      "apiError": "API错误"
+    },
   "buttons": {
-    "submitToken": "提交令牌",
+      "submitApiKey": "提交x-api-key",
     "ok": "确定"
   }
 }
