@@ -54,8 +54,16 @@ def webhook():
 
     # Extract the encrypted data and metadata
     encrypted_data = data.get('dataEncrypt')
+    if not encrypted_data:
+        print("No encrypted data found in webhook")
+        return jsonify({"message": "Missing dataEncrypt field"}), 400
+    
     client_id = os.getenv('CLIENT_ID')
     client_secret = os.getenv('CLIENT_SECRET')
+    
+    if not client_id or not client_secret:
+        print("Missing CLIENT_ID or CLIENT_SECRET in environment variables")
+        return jsonify({"message": "Server configuration error"}), 500
 
     try:
         # Decrypt the data
@@ -67,27 +75,54 @@ def webhook():
             decrypted_json = json.loads(decrypted_data)
             print("Parsed JSON:", decrypted_json)  # Add this line for debugging
 
-            # Check if required fields exist
-            if 'status' not in decrypted_json:
-                print("Missing 'status' in payload:", decrypted_json)
-                return jsonify({"message": "Invalid payload structure - missing video_status"}), 400
+            # Check for status field (can be 'status' or 'video_status')
+            video_status = decrypted_json.get('status') or decrypted_json.get('video_status')
+            
+            if video_status is None:
+                print("Missing 'status' or 'video_status' in payload:", decrypted_json)
+                return jsonify({"message": "Invalid payload structure - missing status"}), 400
 
             # Log all status updates
-            print(f"Processing status {decrypted_json['status']} with full payload:", decrypted_json)
+            print(f"Processing status {video_status} with full payload:", decrypted_json)
 
-            # Handle different status codes
-            if decrypted_json['status'] == 3:
-                print("Status is 3, emitting event", decrypted_json)
-                socketio.emit('message', {'data': decrypted_json, 'type': 'event'})
-            elif decrypted_json['status'] == 4:
-                print("Face swap failed")
+            # Video status codes: 1: queueing, 2: processing, 3: completed, 4: failed
+            if video_status == 3:
+                # Video translation completed
+                print("Video translation completed, emitting event", decrypted_json)
+                # Ensure the payload includes url and _id for frontend
+                event_data = {
+                    'url': decrypted_json.get('video') or decrypted_json.get('url'),
+                    '_id': decrypted_json.get('_id') or decrypted_json.get('video_id'),
+                    'video_status': 3,
+                    'progress': decrypted_json.get('progress', 100)
+                }
+                socketio.emit('message', {'data': event_data, 'type': 'event'})
+                
+            elif video_status == 4:
+                # Video translation failed
+                print("Video translation failed")
+                error_message = decrypted_json.get('error_reason') or decrypted_json.get('error_message') or \
+                    'Video translation failed. This could be due to invalid video format, network issues, or processing errors. Please try again or contact support if the issue persists.'
+                
                 socketio.emit('message', {
                     'type': 'error',
-                    'message': 'Face swap failed. This could be due to invalid VSideo/Image format, network issues, or processing errors. Please try again or contact support if the issue persists.'
+                    'message': error_message,
+                    'error_code': decrypted_json.get('error_code'),
+                    'data': decrypted_json
                 })
+                
+            elif video_status in [1, 2]:
+                # Queueing or processing - emit status update with progress
+                print(f"Video translation status {video_status} (queueing/processing), payload:", decrypted_json)
+                status_data = {
+                    '_id': decrypted_json.get('_id') or decrypted_json.get('video_id'),
+                    'video_status': video_status,
+                    'progress': decrypted_json.get('progress', 0)
+                }
+                socketio.emit('message', {'data': status_data, 'type': 'event'})
             else:
-                print(f"Received status {decrypted_json['status']}, payload:", decrypted_json)
-                # Optionally emit other status updates
+                # Unknown status - emit as status update
+                print(f"Received unknown status {video_status}, payload:", decrypted_json)
                 socketio.emit('message', {'data': decrypted_json, 'type': 'status_update'})
 
             return jsonify({
@@ -101,6 +136,8 @@ def webhook():
 
     except Exception as e:
         print(f"Error processing webhook: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"message": f"Error processing webhook: {str(e)}"}), 400
 
 

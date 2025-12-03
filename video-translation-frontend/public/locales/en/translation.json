@@ -1,0 +1,88 @@
+{
+  "appTitle": "AI Video Translator",
+  "auth": {
+    "apiKey": "x-api-key",
+    "enterApiKey": "Enter your x-api-key",
+    "clientCredentials": "Client Credentials",
+    "clientId": "Client ID",
+    "enterClientId": "Enter your Client ID",
+    "clientSecret": "Client Secret",
+    "enterClientSecret": "Enter your Client Secret",
+    "getToken": "Get Token",
+    "fetchingToken": "Fetching Token..."
+  },
+  "selectSourceLanguage": "Select Source Language",
+  "selectTargetLanguage": "Select Target Language",
+  "selectVoice": "Select Voice",
+  "videoUrl": "Video URL",
+  "enterVideoUrl": "Enter video URL",
+  "enableLipSync": "Enable Lip Sync",
+  "translate": "Translate",
+  "translating": "Translating...",
+  "downloadVideo": "Download Video",
+  "translateAnother": "Translate Another",
+  "videoPreview": {
+    "title": "Video Preview",
+    "placeholder": "Enter a video URL above to preview",
+    "error": "Unable to load video. Please check the URL."
+  },
+  "languageSelection": {
+    "title": "Language Selection"
+  },
+  "basicOptions": {
+    "title": "Basic Options",
+    "speakerNum": "Number of Speakers",
+    "autoDetect": "Auto-detect",
+    "dynamicVideoLength": "Dynamic video length"
+  },
+  "advancedSettings": {
+    "title": "Advanced Settings",
+    "removeBgm": "Remove Background Music",
+    "captionType": "Subtitles",
+    "captionFileUrl": "Caption File URL (SRT/ASS)",
+    "captionFileUrlHint": "Only SRT and ASS formats are supported",
+    "captionOptions": {
+      "none": "None",
+      "addOriginal": "Add captions for original language",
+      "addTarget": "Add captions for target language",
+      "translateReplace": "Translate and replace original subtitles",
+      "addTranslated": "Add transferred subtitles while keeping original subtitles"
+    }
+  },
+  "loading": {
+    "languages": "Loading languages...",
+    "voices": "Loading voices..."
+  },
+  "processing": {
+    "title": "Processing Video",
+    "message": "Your video is being processed. Thank you for your patience",
+    "statuses": {
+      "queueing": "Queueing",
+      "processing": "Processing",
+      "completed": "Completed",
+      "failed": "Failed"
+    }
+  },
+  "results": {
+    "title": "Translation Results",
+    "singleVideo": "Your translated video is ready!",
+    "multipleVideos": "Your {{count}} translated videos are ready!",
+    "backToGallery": "Back to Gallery",
+    "galleryHint": "Click on any video to preview and download",
+    "videosReady": "{{completed}} of {{total}} videos ready",
+    "videosReadyWithFailed": "{{completed}} videos ready, {{failed}} failed"
+  },
+  "errors": {
+    "invalidInput": "Please provide a valid video URL, select a source language and at least one target language.",
+    "fetchError": "An error occurred while fetching languages.",
+    "translationError": "An error occurred while translating the video.",
+    "apiKeyError": "Please provide a valid x-api-key",
+    "tokenError": "Please provide both Client ID and Client Secret",
+    "voiceRequired": "Please select a voice for all target languages that require it",
+    "apiError": "API Error"
+  },
+  "buttons": {
+    "submitApiKey": "Submit x-api-key",
+    "ok": "OK"
+  }
+}
